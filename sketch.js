@@ -1,7 +1,7 @@
 let imgbg, imgryu, imgryuattack, imgryudamage, imgyoshi, imgball, imgyoshiattack, imgyoshidamage;
-let ryux = 428, yoshix =1050, ballx = 650;
+let ryux = 428, yoshix =1050, ballx = 650; //position
 let ryuy = 300, yoshiy = 420, bally = 400;
-let ryusizex = 286, ryusizey = 474;
+let ryusizex = 286, ryusizey = 474; //size
 let yoshisizex = 217, yoshisizey = 334;
 let ballsizex = 90, ballsizey = 100;
 let yoshiattackx = 950, yoshiattacky = 380;
@@ -16,7 +16,6 @@ let maxHealth = 600;
 let scene = 0;
 let damageright = 50;
 let damageleft = 50;
-// let drawwidth = 600;
 let countleft = 0;
 let countright = 0;
 var gamestate;
@@ -42,12 +41,12 @@ let ref2 = firebase.database().ref('data2');
     ref2.on("value", gotData2);
 
 function gotData1(data) {
-  value1 = data.val(); // 获取Firebase数据库中的值
-  console.log(value1); // 在控制台输出值
+  value1 = data.val(); // get value1 in firebase
+  console.log(value1); // print value1
 }
 
 function gotData2(data) {
-  value2 = data.val(); // 将第二个路径的值存储到变量 value2 中
+  value2 = data.val(); // value2
   console.log(value2);
 }
 
@@ -72,7 +71,7 @@ function setup() {
   imgyoshiattack = loadImage('耀西舌頭長.png');
   imgyoshidamage = loadImage('耀西被揍.png');
   createCanvas(1773, 896);
-  font = loadFont('PressStart2P-Regular.ttf') ;
+  font = loadFont('PressStart2P-Regular.ttf') ; //font
   gamestate = 2;
   
   
@@ -81,7 +80,7 @@ function setup() {
 
 function draw() {
  
-   //預備姿勢
+   //pre position
    image(imgbg, 0, 0, 1773, 896);
    image(imgryu, ryux, ryuy, ryusizex, ryusizey);
    if(movingLeft == false){
@@ -124,7 +123,7 @@ function draw() {
     else movingLeft = false;
     
     
-    //招式
+    //ryu attack
    if(movingUp){
      imgryu = imgryuattack;
      image(imgball, ballx, bally, ballsizex, ballsizey);
@@ -144,7 +143,7 @@ function draw() {
      // hasData1 = false;
   }
     
-  
+  //yoshi attack
   if(movingLeft){
       image(imgyoshiattack, yoshiattackx, yoshiattacky, yoshiattacksizex, yoshiattacksizey);
       
@@ -163,7 +162,7 @@ function draw() {
     // hasData2 = false;
   }
     
-    //被打變回原始姿勢
+    //when hit change to initial position
     if(yoshi_is_hit){
     if(countright < 50){
       countright++;
@@ -187,15 +186,15 @@ function draw() {
   }
   
     
-  //生命條左
+  //life bar left
  
-  //邊框左
+  //stroke left
   stroke(0);
   strokeWeight(4);
   noFill();
   rect(0, 0, 600, 50);
   
-  //顏色左
+  //color left
   if(healthleft < 150){
     fill(255, 0, 0);
   }
@@ -206,20 +205,19 @@ function draw() {
     fill(0, 255, 0);
   }
   
-  //血量條左
+  //remain life bar left
   noStroke();
   drawwidth = healthleft;
   rect(0, 3, drawwidth , 45);
   
-  //生命條右
-  
-  //邊框右
+  //life bar right
+  //storke right
   stroke(0);
   strokeWeight(4);
   noFill();
   rect(1173, 0, 600, 50);
   
-  //顏色右
+  //color right
   if(healthright > 450){
     fill(255, 0, 0);
   }
@@ -230,7 +228,7 @@ function draw() {
     fill(0, 255, 0);
   }
   
-  //血量條右
+  //remain life bar right
   noStroke();
   drawwidth2 = 1173+healthright;
   rect(drawwidth2, 3, 1773 , 45);
@@ -238,7 +236,7 @@ function draw() {
 
   
   
-  //龍勝利
+  //ryu win
   if(healthright >= 600){
     fill(250,0,0);
       textFont(font);
@@ -253,7 +251,7 @@ function draw() {
     noLoop();
   }
   
-  //耀西勝利
+  //yoshi win
   if(healthleft <= 0){
     fill(250,0,0);
       textFont(font);
