@@ -16,9 +16,9 @@ street fightをボクシングゲームに変身
 - **Hardware**: ESP32, 圧力センサー (Keyes Thin-film Pressure Sensor)
 - **Communication**: Wi-Fi 経由の Firebase 連携
 ## システム実装の詳細 | Technical Implementation
-**1. ハードウェアとクラウドの連携**
+1. **ハードウェアとクラウドの連携**<br>
   2台の ESP32 を使用し、それぞれの圧力センサーの値を独立して取得。Wi-Fi経由で Firebase Realtime Database上の特定のvalueを更新する仕組みを構築しました
-**2. リアルタイム通信の最適化**
+2. **リアルタイム通信の最適化**<br>
   p5.js 側で Firebase のリスナーを実装し、データベースの更新を即座にゲーム内の HP バーのアニメーションに反映させました
 ## 課題と今後の展望 | Challenges & Future Work
 - **精度の向上**: 現状、圧力センサーの感知範囲が限定的であるため、ヒット判定の正確性に課題が残っています。今後はセンサーの配置最適化や、複数のセンサーを組み合わせたマトリックス構造への改良を検討しています
