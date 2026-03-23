@@ -1,3 +1,4 @@
+[繁體中文](./README_zh.md) | [日本語](./README.md)
 # Street Fight：ストレス解消型インタラクティブ・ボクシングゲーム
 street fightをボクシングゲームに変身
 ## 概要 | Project Overview
